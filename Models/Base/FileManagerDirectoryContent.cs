@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-#if EJ2_DNX
 using System.Web.Mvc;
 using System.Web;
-#else
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Net.Http.Headers;
-#endif
 
 namespace Syncfusion.EJ2.FileManager.Base
 {
@@ -47,11 +41,7 @@ namespace Syncfusion.EJ2.FileManager.Base
 
         public string FilterPath { get; set; }
 
-#if EJ2_DNX
-             public IList<System.Web.HttpPostedFileBase> UploadFiles { get; set; }
-#else
-        public IList<IFormFile> UploadFiles { get; set; }
-#endif
+        public IList<System.Web.HttpPostedFileBase> UploadFiles { get; set; }
 
         public bool CaseSensitive { get; set; }
 

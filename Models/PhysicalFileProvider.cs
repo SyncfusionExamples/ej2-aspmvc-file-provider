@@ -3,23 +3,15 @@ using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Syncfusion.EJ2.FileManager.Base;
-
-
-#if EJ2_DNX
 using System.Web.Mvc;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Drawing.Drawing2D;
 using System.Web;
-#else
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Net.Http.Headers;
-#endif
+using System.Drawing.Drawing2D;
+using System.IO.Compression;
 
 namespace Syncfusion.EJ2.FileManager.PhysicalFileProvider
 {

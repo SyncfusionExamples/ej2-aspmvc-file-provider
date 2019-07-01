@@ -1,5 +1,4 @@
-﻿using EJ2ASPMVCFileProvider;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,10 +14,10 @@ namespace EJ2ASPMVCFileProvider
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
         }
     }
 }

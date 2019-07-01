@@ -6,16 +6,9 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text.RegularExpressions;
-
-
-#if EJ2_DNX
 using System.Web.Mvc;
 using System.Web;
-#else
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Net.Http.Headers;
-#endif
+
 namespace Syncfusion.EJ2.FileManager.Base
 {
     public interface FileProviderBase
@@ -37,11 +30,9 @@ namespace Syncfusion.EJ2.FileManager.Base
         FileManagerResponse Search(string path, string searchString, bool showHiddenItems, bool caseSensitive, params FileManagerDirectoryContent[] data);
 
         FileStreamResult Download(string path, string[] names, params FileManagerDirectoryContent[] data);
-#if EJ2_DNX
-            FileManagerResponse Upload(string path, IList<System.Web.HttpPostedFileBase> uploadFiles, string action, params FileManagerDirectoryContent[] data);
-#else
-        FileManagerResponse Upload(string path, IList<IFormFile> uploadFiles, string action, params FileManagerDirectoryContent[] data);
-#endif
+
+        FileManagerResponse Upload(string path, IList<System.Web.HttpPostedFileBase> uploadFiles, string action, params FileManagerDirectoryContent[] data);
+
 
         FileStreamResult GetImage(string path, string id, bool allowCompress, ImageSize size, params FileManagerDirectoryContent[] data);
       
