@@ -1,4 +1,4 @@
-# ASP.NET MVC 5 file provider for the file manager component
+# ASP.NET MVC 5 file provider for Essential JS2 File Manager
 
 This repository contains the ASP.NET MVC 5 file system provider for the Essential JS 2 File Manager component.
 
@@ -30,7 +30,7 @@ To run this application, you need to first clone the `ej2-aspmvc-file-provider` 
 To do so, open the command prompt and run the below commands one after the other.
 
 ```
-git clone https://github.com/ej2-aspmvc-file-provider ej2-aspmvc-file-provider
+git clone https://github.com/SyncfusionExamples/ej2-aspmvc-file-provider ej2-aspmvc-file-provider
 
 cd ej2-aspmvc-file-provider
 
