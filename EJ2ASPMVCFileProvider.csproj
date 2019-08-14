@@ -46,6 +46,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Syncfusion.EJ2, Version=17.2500.0.34, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.EJ2.MVC5.17.2.0.34\lib\net45\Syncfusion.EJ2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
@@ -104,6 +107,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -146,18 +150,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Base\AccessDetails.cs" />
-    <Compile Include="Models\Base\AccessPermission.cs" />
-    <Compile Include="Models\Base\AzureFileProviderBase.cs" />
-    <Compile Include="Models\Base\ErrorDetails.cs" />
-    <Compile Include="Models\Base\FileDetails.cs" />
-    <Compile Include="Models\Base\FileManagerDirectoryContent.cs" />
-    <Compile Include="Models\Base\FileManagerParams.cs" />
-    <Compile Include="Models\Base\FileManagerResponse.cs" />
-    <Compile Include="Models\Base\FileProviderBase.cs" />
-    <Compile Include="Models\Base\ImageSize.cs" />
-    <Compile Include="Models\Base\PhysicalFileProviderBase.cs" />
-    <Compile Include="Models\PhysicalFileProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
