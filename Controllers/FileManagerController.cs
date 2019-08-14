@@ -31,9 +31,9 @@ namespace EJ2ASPMVCFileProvider.Controllers
                 case "delete":
                     return Json(operation.ToCamelCase(operation.Delete(args.Path, args.Names)));
                 case "details":
-                    if(args.Names == null)
+                    if (args.Names == null)
                     {
-                       args.Names = new string[] { };
+                        args.Names = new string[] { };
                     }
                     return Json(operation.ToCamelCase(operation.Details(args.Path, args.Names)));
                 case "create":
@@ -41,9 +41,9 @@ namespace EJ2ASPMVCFileProvider.Controllers
                 case "search":
                     return Json(operation.ToCamelCase(operation.Search(args.Path, args.SearchString, args.ShowHiddenItems, args.CaseSensitive)));
                 case "copy":
-                    return Json(operation.ToCamelCase(operation.Copy(args.Path, args.TargetPath, args.Names, args.RenameFiles, args.Data)));
+                    return Json(operation.ToCamelCase(operation.Copy(args.Path, args.TargetPath, args.Names, args.RenameFiles, args.TargetData)));
                 case "move":
-                    return Json(operation.ToCamelCase(operation.Move(args.Path, args.TargetPath, args.Names, args.RenameFiles, args.Data)));
+                    return Json(operation.ToCamelCase(operation.Move(args.Path, args.TargetPath, args.Names, args.RenameFiles, args.TargetData)));
                 case "rename":
                     return Json(operation.ToCamelCase(operation.Rename(args.Path, args.Name, args.NewName)));
             }
@@ -65,11 +65,10 @@ namespace EJ2ASPMVCFileProvider.Controllers
 
         }
 
-
         public ActionResult GetImage(FileManagerDirectoryContent args)
         {
-            return operation.GetImage(args.Path, args.Id, false);
+            return operation.GetImage(args.Path, args.Id, false, null, null);
         }
-    
+
     }
 }
