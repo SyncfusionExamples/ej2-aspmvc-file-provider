@@ -1,4 +1,4 @@
-# ASP.NET MVC 5 file provider for Essential JS2 File Manager
+# ASP.NET MVC 5 file provider for the file manager component
 
 This repository contains the ASP.NET MVC 5 file system provider for the Essential JS 2 File Manager component.
 
@@ -10,18 +10,19 @@ ASP.NET MVC file system provider serves the physical file system for the file ma
 
 The following actions can be performed with ASP.NET MVC file system provider.
 
-- Read      - Read the files from the local file storage.
-- Details   - Gets a file's metadata which consists of Type, Size, Location and Modified date.
-- Download  - Download the selected file or folder
-- Upload    - Upload's the file. It accepts uploaded media with the following characteristics:
-                - Maximum file size:  30MB
-                - Accepted Media MIME types: */*
-- Create    - Create a new folder.
-- Delete    - Delete a folder or file.
-- Copy      - Copies the contents of the file from the target location.
-- Move      - Paste the copied files to the desired location.
-- Rename    - Rename a folder or file.
-- Search    - Search a file or folder.
+| **Actions** | **Description** |
+| --- | --- |
+| Read      | Read the files from the local file storage. |
+| Details   | Gets a file's metadata which consists of Type, Size, Location and Modified date. |
+| Download  | Download the selected file or folder. |
+| Upload    | Upload's the file. t accepts uploaded media with the following characteristics: <ul><li>Maximum file size:  30MB</li><li>Accepted Media MIME types: `*/*`
+</li></ul> |   
+| Create    | Create a new folder. |
+| Delete    | Delete a folder or file. |
+| Copy      | Copies the contents of the file from the target location. |
+| Move      | Paste the copied files to the desired location. |
+| Rename    | Rename a folder or file. |
+| Search    | Search a file or folder. |
 
 ## How to run this application?
 
@@ -39,6 +40,59 @@ cd ej2-aspmvc-file-provider
 ## Running application
 
 Once cloned, open solution file in visual studio.Then build the project and run it after restoring the nuget packages.
+
+## File Manager AjaxSettings
+
+To access the basic actions such as Read, Delete, Copy, Move, Rename, Search, and Get Details of File Manager using Azure service, just map the following code snippet in the Ajaxsettings property of File Manager.
+
+Here, the `hostUrl` will be your locally hosted port number.
+
+```
+  var hostUrl = http://localhost:{PORT}/;
+  ajaxSettings: {
+        url: hostUrl + 'FileManager/FileOperations'
+  }
+```
+
+## File download AjaxSettings
+
+To perform download operation, initialize the `downloadUrl` property in ajaxSettings of the File Manager component.
+
+```
+  var hostUrl = http://localhost:{PORT}/;
+  ajaxSettings: {
+        url: hostUrl + 'FileManager/FileOperations',
+        downloadUrl: hostUrl +'FileManager/Download'
+  }
+```
+
+## File upload AjaxSettings
+
+To perform upload operation, initialize the `uploadUrl` property in ajaxSettings of the File Manager component.
+
+```
+  var hostUrl = http://localhost:{PORT}/;
+  ajaxSettings: {
+        url: hostUrl + 'FileManager/FileOperations',
+        uploadUrl: hostUrl +'FileManager/Upload'
+  }
+```
+
+## File image preview AjaxSettings
+
+To perform image preview support in the File Manager component, initialize the `getImageUrl` property in ajaxSettings of the File Manager component.
+
+```
+  var hostUrl = http://localhost:{PORT}/;
+  ajaxSettings: {
+        url: hostUrl + 'FileManager/FileOperations',
+         getImageUrl: hostUrl +'FileManager/GetImage'
+  }
+```
+
+The FileManager will be rendered as the following.
+
+![File Manager](https://ej2.syncfusion.com/products/images/file-manager/readme.gif)
 
 ## Support
 
