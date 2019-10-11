@@ -4,6 +4,8 @@ using System.Web.Hosting;
 using Newtonsoft.Json;
 using Syncfusion.EJ2.FileManager.PhysicalFileProvider;
 using Syncfusion.EJ2.FileManager.Base;
+using System.Web;
+using System;
 
 namespace EJ2ASPMVCFileProvider.Controllers
 {
@@ -27,15 +29,15 @@ namespace EJ2ASPMVCFileProvider.Controllers
             switch (args.Action)
             {
                 case "read":
-                    return Json(operation.ToCamelCase(operation.GetFiles(args.Path, false)));
+                    return Json(operation.ToCamelCase(operation.GetFiles(args.Path, args.ShowHiddenItems)));
                 case "delete":
                     return Json(operation.ToCamelCase(operation.Delete(args.Path, args.Names)));
                 case "details":
-                    if (args.Names == null)
+                    if(args.Names == null)
                     {
-                        args.Names = new string[] { };
+                       args.Names = new string[] { };
                     }
-                    return Json(operation.ToCamelCase(operation.Details(args.Path, args.Names)));
+                    return Json(operation.ToCamelCase(operation.Details(args.Path, args.Names, args.Data)));
                 case "create":
                     return Json(operation.ToCamelCase(operation.Create(args.Path, args.Name)));
                 case "search":
@@ -52,8 +54,21 @@ namespace EJ2ASPMVCFileProvider.Controllers
         }
         public ActionResult Upload(string path, IList<System.Web.HttpPostedFileBase> uploadFiles, string action)
         {
+            if (path == null)
+            {
+                return Content("");
+            }
             FileManagerResponse uploadResponse;
             uploadResponse = operation.Upload(path, uploadFiles, action, null);
+            if (uploadResponse.Error != null)
+            {
+                HttpResponse Response = System.Web.HttpContext.Current.Response;
+                Response.Clear();
+                Response.Status = uploadResponse.Error.Code + " " + uploadResponse.Error.Message;
+                Response.StatusCode = Int32.Parse(uploadResponse.Error.Code);
+                Response.StatusDescription = uploadResponse.Error.Message;
+                Response.End();
+            }
 
             return Content("");
         }
@@ -65,10 +80,11 @@ namespace EJ2ASPMVCFileProvider.Controllers
 
         }
 
+
         public ActionResult GetImage(FileManagerDirectoryContent args)
         {
             return operation.GetImage(args.Path, args.Id, false, null, null);
         }
-
+    
     }
 }
