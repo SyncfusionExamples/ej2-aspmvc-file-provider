@@ -48,9 +48,9 @@ To access the basic actions such as Read, Delete, Copy, Move, Rename, Search, an
 Here, the `hostUrl` will be your locally hosted port number.
 
 ```
-  var hostUrl = http://localhost:{PORT}/;
+  var hostUrl = http://localhost:62870/;
   ajaxSettings: {
-        url: hostUrl + 'FileManager/FileOperations'
+        url: hostUrl + 'api/FileManager/FileOperations'
   }
 ```
 
@@ -59,10 +59,10 @@ Here, the `hostUrl` will be your locally hosted port number.
 To perform download operation, initialize the `downloadUrl` property in ajaxSettings of the File Manager component.
 
 ```
-  var hostUrl = http://localhost:{PORT}/;
+  var hostUrl = http://localhost:62870/;
   ajaxSettings: {
-        url: hostUrl + 'FileManager/FileOperations',
-        downloadUrl: hostUrl +'FileManager/Download'
+        url: hostUrl + 'api/FileManager/FileOperations',
+        downloadUrl: hostUrl +'api/FileManager/Download'
   }
 ```
 
@@ -71,10 +71,10 @@ To perform download operation, initialize the `downloadUrl` property in ajaxSett
 To perform upload operation, initialize the `uploadUrl` property in ajaxSettings of the File Manager component.
 
 ```
-  var hostUrl = http://localhost:{PORT}/;
+  var hostUrl = http://localhost:62870/;
   ajaxSettings: {
-        url: hostUrl + 'FileManager/FileOperations',
-        uploadUrl: hostUrl +'FileManager/Upload'
+        url: hostUrl + 'api/FileManager/FileOperations',
+        uploadUrl: hostUrl +'api/FileManager/Upload'
   }
 ```
 
@@ -83,10 +83,10 @@ To perform upload operation, initialize the `uploadUrl` property in ajaxSettings
 To perform image preview support in the File Manager component, initialize the `getImageUrl` property in ajaxSettings of the File Manager component.
 
 ```
-  var hostUrl = http://localhost:{PORT}/;
+  var hostUrl = http://localhost:62870/;
   ajaxSettings: {
-        url: hostUrl + 'FileManager/FileOperations',
-         getImageUrl: hostUrl +'FileManager/GetImage'
+        url: hostUrl + 'api/FileManager/FileOperations',
+         getImageUrl: hostUrl +'api/FileManager/GetImage'
   }
 ```
 
