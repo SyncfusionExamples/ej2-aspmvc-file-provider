@@ -50,7 +50,7 @@ Here, the `hostUrl` will be your locally hosted port number.
 ```
   var hostUrl = http://localhost:{PORT}/;
   ajaxSettings: {
-        url: hostUrl + 'FileManager/FileOperations'
+        url: hostUrl + 'api/FileManager/FileOperations'
   }
 ```
 
@@ -61,8 +61,8 @@ To perform download operation, initialize the `downloadUrl` property in ajaxSett
 ```
   var hostUrl = http://localhost:{PORT}/;
   ajaxSettings: {
-        url: hostUrl + 'FileManager/FileOperations',
-        downloadUrl: hostUrl +'FileManager/Download'
+        url: hostUrl + 'api/FileManager/FileOperations',
+        downloadUrl: hostUrl +'api/FileManager/Download'
   }
 ```
 
@@ -73,8 +73,8 @@ To perform upload operation, initialize the `uploadUrl` property in ajaxSettings
 ```
   var hostUrl = http://localhost:{PORT}/;
   ajaxSettings: {
-        url: hostUrl + 'FileManager/FileOperations',
-        uploadUrl: hostUrl +'FileManager/Upload'
+        url: hostUrl + 'api/FileManager/FileOperations',
+        uploadUrl: hostUrl +'api/FileManager/Upload'
   }
 ```
 
@@ -85,8 +85,8 @@ To perform image preview support in the File Manager component, initialize the `
 ```
   var hostUrl = http://localhost:{PORT}/;
   ajaxSettings: {
-        url: hostUrl + 'FileManager/FileOperations',
-         getImageUrl: hostUrl +'FileManager/GetImage'
+        url: hostUrl + 'api/FileManager/FileOperations',
+         getImageUrl: hostUrl +'api/FileManager/GetImage'
   }
 ```
 
