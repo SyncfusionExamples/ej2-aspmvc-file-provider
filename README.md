@@ -15,8 +15,7 @@ The following actions can be performed with ASP.NET MVC file system provider.
 | Read      | Read the files from the local file storage. |
 | Details   | Gets a file's metadata which consists of Type, Size, Location and Modified date. |
 | Download  | Download the selected file or folder. |
-| Upload    | Upload's the file. t accepts uploaded media with the following characteristics: <ul><li>Maximum file size:  30MB</li><li>Accepted Media MIME types: `*/*`
-</li></ul> |   
+| Upload    | Upload's the file. Accepts uploaded media with the following characteristics: <ul><li>Maximum file size:  30MB</li><li>Accepted Media MIME types: `*/*`</li></ul> |
 | Create    | Create a new folder. |
 | Delete    | Delete a folder or file. |
 | Copy      | Copies the contents of the file from the target location. |
@@ -24,22 +23,16 @@ The following actions can be performed with ASP.NET MVC file system provider.
 | Rename    | Rename a folder or file. |
 | Search    | Search a file or folder. |
 
-## How to run this application?
+## Prerequisites
 
-To run this application, you need to first clone the `ej2-aspmvc-file-provider` repository and then navigate to its appropriate path where it has been located in your system.
+* Visual Studio 2022
 
-To do so, open the command prompt and run the below commands one after the other.
+## How to run the project
 
-```
-git clone https://github.com/SyncfusionExamples/ej2-aspmvc-file-provider ej2-aspmvc-file-provider
-
-cd ej2-aspmvc-file-provider
-
-```
-
-## Running application
-
-Once cloned, open solution file in visual studio.Then build the project and run it after restoring the nuget packages.
+* Checkout this project to a location in your disk.
+* Open the solution file using Visual Studio 2022.
+* Restore the NuGet packages by rebuilding the solution.
+* Run the project.
 
 ## File Manager AjaxSettings
 
