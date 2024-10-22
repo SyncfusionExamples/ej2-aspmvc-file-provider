@@ -22,7 +22,7 @@ namespace EJ2ASPMVCFileProvider.Controllers
         public string basePath;
         public FileManagerController()
         {
-            this.basePath = HostingEnvironment.MapPath("~/Content/images/FileManager");
+            this.basePath = HostingEnvironment.MapPath("~/Content/Files");
             this.operation.RootFolder(HostingEnvironment.MapPath("~/Content/Files"));
         }
 
