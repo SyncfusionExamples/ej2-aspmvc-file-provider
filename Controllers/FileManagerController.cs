@@ -6,6 +6,7 @@ using Syncfusion.EJ2.FileManager.PhysicalFileProvider;
 using Syncfusion.EJ2.FileManager.Base;
 using System.Web;
 using System;
+using System.IO;
 
 namespace EJ2ASPMVCFileProvider.Controllers
 {
@@ -18,8 +19,10 @@ namespace EJ2ASPMVCFileProvider.Controllers
         }
 
         PhysicalFileProvider operation = new PhysicalFileProvider();
+        public string basePath;
         public FileManagerController()
         {
+            this.basePath = HostingEnvironment.MapPath("~/Content/images/FileManager");
             this.operation.RootFolder(HostingEnvironment.MapPath("~/Content/Files"));
         }
 
@@ -54,23 +57,46 @@ namespace EJ2ASPMVCFileProvider.Controllers
         }
         public ActionResult Upload(string path, IList<System.Web.HttpPostedFileBase> uploadFiles, string action)
         {
-            if (path == null)
+            try
             {
+                FileManagerResponse uploadResponse;
+                foreach (var file in uploadFiles)
+                {
+                    var folders = (file.FileName).Split('/');
+                    // checking the folder upload
+                    if (folders.Length > 1)
+                    {
+                        for (var i = 0; i < folders.Length - 1; i++)
+                        {
+                            string newDirectoryPath = Path.Combine(this.basePath + path, folders[i]);
+                            if (Path.GetFullPath(newDirectoryPath) != (Path.GetDirectoryName(newDirectoryPath) + Path.DirectorySeparatorChar + folders[i]))
+                            {
+                                throw new UnauthorizedAccessException("Access denied for Directory-traversal");
+                            }
+                            if (!Directory.Exists(newDirectoryPath))
+                            {
+                                this.operation.ToCamelCase(this.operation.Create(path, folders[i]));
+                            }
+                            path += folders[i] + "/";
+                        }
+                    }
+                }
+                // Invoking upload operation with the required paramaters
+                // path - Current path where the file is to uploaded; uploadFiles - Files to be uploaded; action - name of the operation(upload)
+                uploadResponse = operation.Upload(path, uploadFiles, action, null);
                 return Content("");
             }
-            FileManagerResponse uploadResponse;
-            uploadResponse = operation.Upload(path, uploadFiles, action, null);
-            if (uploadResponse.Error != null)
+            catch (Exception e)
             {
-                HttpResponse Response = System.Web.HttpContext.Current.Response;
+                ErrorDetails er = new ErrorDetails();
+                er.Message = e.Message.ToString();
+                er.Code = "417";
+                er.Message = "Access denied for Directory-traversal";
                 Response.Clear();
-                Response.Status = uploadResponse.Error.Code + " " + uploadResponse.Error.Message;
-                Response.StatusCode = Int32.Parse(uploadResponse.Error.Code);
-                Response.StatusDescription = uploadResponse.Error.Message;
-                Response.End();
+                Response.ContentType = "application/json; charset=utf-8";
+                Response.StatusCode = Convert.ToInt32(er.Code);
+                return Content("");
             }
-
-            return Content("");
         }
 
         public ActionResult Download(string downloadInput)
